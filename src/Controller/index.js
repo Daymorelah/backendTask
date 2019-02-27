@@ -38,6 +38,16 @@ class UserController {
       HelperMethods.serverError(res);
     }
   }
+
+  /**
+   * Apply JSON patch
+   * Route: PATCH: apply/json_patch
+   * @param {object} req - Request object
+   * @param {object} res - Response object
+   * @return {res} res - Response object
+   * @memberof UserController
+   */
+  static async applyJsonPatch(req, res){}
 }
 
 export default UserController;

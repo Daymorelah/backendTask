@@ -11,8 +11,9 @@ const routes = (app) => {
     Controller.userLogin,
   );
   app.patch(
-    'api/v1/apply/json_patch',
+    '/api/v1/apply/json_patch',
     Authenticate.checkToken,
+    validateUserInputs.validatePatchJson,
     Controller.applyJsonPatch,
   );
 };

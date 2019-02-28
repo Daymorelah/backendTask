@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import jsonPatch from 'json-patch';
 import { HelperMethods, Authenticate } from '../Utilities';
 
 dotenv.config();
@@ -47,7 +48,18 @@ class UserController {
    * @return {res} res - Response object
    * @memberof UserController
    */
-  static async applyJsonPatch(req, res){}
+  static async applyJsonPatch(req, res) {
+    const { jsonObject, jsonPatchObject } = req.body;
+    try {
+      const newJsonObject = jsonPatch.apply(jsonObject, jsonPatchObject);
+      res.status(201).json({ newJsonObject });
+    } catch (error) {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  }
 }
 
 export default UserController;

@@ -18,7 +18,7 @@ routes(app);
 // Catch all invalid routes
 app.all('*', (req, res) => {
   res.status(404).json({
-    code: 404,
+    success: false,
     message: 'Page not found',
   });
 });
@@ -26,7 +26,7 @@ app.all('*', (req, res) => {
 // Catch all errors not handled by routes
 app.use((err, req, res, next) => {
   res.status(500).json({
-    code: 500,
+    success: false,
     message: 'Something failed',
   });
   next();

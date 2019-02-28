@@ -56,6 +56,39 @@ class Validate {
     }
     return allFieldsRequired(res);
   }
+
+  /**
+   *
+   * @param {object} req - Request object
+   * @param {object} res - Response object
+   * @param {callback} next - The callback that passes the request
+   * to the next handler
+   * @returns {object} res - Response object when query is invalid
+   * @next {callback} - passes the request to the next handler
+   * @memberof Validate
+   */
+  static validatePatchJson(req, res, next) {
+    const { jsonObject, jsonPatchObject } = req.body;
+    if (jsonObject && jsonPatchObject) {
+      if (typeof jsonPatchObject !== 'object' && typeof jsonObject !== 'object') {
+        return res.status(400).json({
+          success: false,
+          message: 'Invalid input fields. Only JSON objects are allowed.',
+        });
+      }
+      if (jsonPatchObject[0].op !== 'add') {
+        return res.status(400).json({
+          success: false,
+          message: 'Only add operations are allowed',
+        });
+      }
+      return next();
+    }
+    return res.status(400).json({
+      success: false,
+      message: 'All fields are required',
+    });
+  }
 }
 
 export default Validate;

@@ -11,7 +11,7 @@ dotenv.config();
  * @class UserController
  * @description users controller
  */
-class UserController {
+class Controller {
   /**
    * User Login
    * Route: POST: auth/login
@@ -20,6 +20,7 @@ class UserController {
    * @return {res} res - Response object
    * @memberof UserController
    */
+  /* eslint-disable consistent-return */
   static async userLogin(req, res) {
     const { username, password } = req.body;
     try {
@@ -31,14 +32,14 @@ class UserController {
           username,
           token: tokenCreated,
         };
-        res.status(200).json({
+        return res.status(200).json({
           success: true,
           message: 'Login successful',
           userDetails,
         });
       }
     } catch (error) {
-      HelperMethods.sendErrorMessage(res, 500);
+      return HelperMethods.sendErrorMessage(res, 500);
     }
   }
 
@@ -54,12 +55,20 @@ class UserController {
     const { jsonObject, jsonPatchObject } = req.body;
     try {
       const newJsonObject = await jsonPatch.apply(jsonObject, jsonPatchObject);
-      res.status(201).json({ newJsonObject });
+      return res.status(201).json({ newJsonObject });
     } catch (error) {
-      HelperMethods.sendErrorMessage(res, 400, error.message);
+      return HelperMethods.sendErrorMessage(res, 400, error.message);
     }
   }
 
+  /**
+   * Apply JSON patch
+   * Route: PATCH: apply/json_patch
+   * @param {object} req - Request object
+   * @param {object} res - Response object
+   * @return {res} res - Response object
+   * @memberof UserController
+   */
   static createThumbnail(req, res) {
     const { imageUrl } = req.body;
     jimp.read(imageUrl).then((image) => {
@@ -78,4 +87,4 @@ class UserController {
   }
 }
 
-export default UserController;
+export default Controller;

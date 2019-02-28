@@ -6,6 +6,7 @@ import routes from './Routes';
 const app = express();
 const port = process.env.PORT || 2000;
 
+/* istanbul ignore next */
 if (app.get('env') !== 'test') {
   app.use(logger('dev'));
 }
@@ -34,6 +35,7 @@ app.use((err, req, res, next) => {
 
 /* eslint-disable no-console */
 app.listen(port, (error) => {
+  /* istanbul ignore next */
   if (error) {
     console.log(`An error occurred try to start the sever. Error is ${error}`);
   } else {

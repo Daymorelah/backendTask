@@ -16,6 +16,12 @@ const routes = (app) => {
     validateUserInputs.validatePatchJson,
     Controller.applyJsonPatch,
   );
+  app.post(
+    '/api/v1/resize/image',
+    Authenticate.checkToken,
+    validateUserInputs.validateCreateThumbnail,
+    Controller.createThumbnail,
+  );
 };
 
 export default routes;

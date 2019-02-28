@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import HelperMethods from './helperMethods';
 
 dotenv.config();
 const secret = process.env.SECRET;
@@ -23,10 +24,7 @@ class Authenticate {
       req.decoded = decodedToken;
       next();
     } catch (error) {
-      return res.status(401).json({
-        code: 401,
-        message: 'Authentication failed',
-      });
+      return HelperMethods.sendErrorMessage(res, 401, 'Authentication failed');
     }
   }
 

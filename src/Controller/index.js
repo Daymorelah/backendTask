@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 import jsonPatch from 'json-patch';
+import jimp from 'jimp';
+import path from 'path';
 import { HelperMethods, Authenticate } from '../Utilities';
 
 dotenv.config();
@@ -36,7 +38,7 @@ class UserController {
         });
       }
     } catch (error) {
-      HelperMethods.serverError(res);
+      HelperMethods.sendErrorMessage(res, 500);
     }
   }
 
@@ -51,14 +53,28 @@ class UserController {
   static async applyJsonPatch(req, res) {
     const { jsonObject, jsonPatchObject } = req.body;
     try {
-      const newJsonObject = jsonPatch.apply(jsonObject, jsonPatchObject);
+      const newJsonObject = await jsonPatch.apply(jsonObject, jsonPatchObject);
       res.status(201).json({ newJsonObject });
     } catch (error) {
-      res.status(400).json({
-        success: false,
-        message: error.message,
-      });
+      HelperMethods.sendErrorMessage(res, 400, error.message);
     }
+  }
+
+  static createThumbnail(req, res) {
+    const { imageUrl } = req.body;
+    jimp.read(imageUrl).then((image) => {
+      image.resize(50, 50).write(path.resolve(__dirname, '../image', `newImage.${image.getExtension()}`),
+        (error, resizedImage) => {
+          if (error) {
+            return HelperMethods
+              .sendErrorMessage(res, 401, error.message);
+          }
+          return res.status(200).json({
+            message: 'Image resized successfully',
+            resizedImage,
+          });
+        });
+    }).catch(error => HelperMethods.sendErrorMessage(res, 500, error.message));
   }
 }
 

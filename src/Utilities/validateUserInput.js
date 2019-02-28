@@ -84,10 +84,21 @@ class Validate {
       }
       return next();
     }
-    return res.status(400).json({
-      success: false,
-      message: 'All fields are required',
-    });
+    return allFieldsRequired(res);
+  }
+
+  static validateCreateThumbnail(req, res, next) {
+    const { imageUrl } = req.body;
+    if (imageUrl) {
+      if (imageUrl.includes('https://')) {
+        return next();
+      }
+      return res.status(400).json({
+        success: false,
+        message: 'Please enter a valid image URL',
+      });
+    }
+    return allFieldsRequired(res);
   }
 }
 

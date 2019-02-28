@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import jsonPatch from 'json-patch';
 import { HelperMethods, Authenticate } from '../Utilities';
 
 dotenv.config();
@@ -36,6 +37,27 @@ class UserController {
       }
     } catch (error) {
       HelperMethods.serverError(res);
+    }
+  }
+
+  /**
+   * Apply JSON patch
+   * Route: PATCH: apply/json_patch
+   * @param {object} req - Request object
+   * @param {object} res - Response object
+   * @return {res} res - Response object
+   * @memberof UserController
+   */
+  static async applyJsonPatch(req, res) {
+    const { jsonObject, jsonPatchObject } = req.body;
+    try {
+      const newJsonObject = jsonPatch.apply(jsonObject, jsonPatchObject);
+      res.status(201).json({ newJsonObject });
+    } catch (error) {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
     }
   }
 }

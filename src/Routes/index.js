@@ -1,5 +1,5 @@
 import Controller from '../Controller';
-import { validateUserInputs } from '../Utilities';
+import { validateUserInputs, Authenticate } from '../Utilities';
 
 const routes = (app) => {
   app.get('/api/v1/', (req, res) => {
@@ -9,6 +9,12 @@ const routes = (app) => {
     '/api/v1/auth/login',
     validateUserInputs.validateLogin,
     Controller.userLogin,
+  );
+  app.patch(
+    '/api/v1/apply/json_patch',
+    Authenticate.checkToken,
+    validateUserInputs.validatePatchJson,
+    Controller.applyJsonPatch,
   );
 };
 

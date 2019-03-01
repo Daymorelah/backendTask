@@ -55,7 +55,10 @@ class Controller {
     const { jsonObject, jsonPatchObject } = req.body;
     try {
       const newJsonObject = await jsonPatch.apply(jsonObject, jsonPatchObject);
-      return res.status(201).json({ newJsonObject });
+      return res.status(201).json({
+        success: true,
+        newJsonObject,
+      });
     } catch (error) {
       return HelperMethods.sendErrorMessage(res, 400, error.message);
     }
@@ -79,6 +82,7 @@ class Controller {
               .sendErrorMessage(res, 401, error.message);
           }
           return res.status(200).json({
+            success: true,
             message: 'Image resized successfully',
             resizedImage,
           });

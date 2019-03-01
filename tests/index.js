@@ -1,1 +1,2 @@
-import './controller.test';
+import './UnitTests';
+import './IntegrationTests';

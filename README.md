@@ -28,6 +28,9 @@ To run tests:
 * `CD` into the project directory
 * Run `npm test` to run tests on the app
 
+## Documentation
+The API is documented using Swagger editor and can be viewed [here](https://app.swaggerhub.com/apis-docs/Daymorelah/Hackerbay/v1)
+
 ## Contributing
 * Fork this repository
 * Clone to your local machine: https://github.com/Daymorelah/backendTask.git

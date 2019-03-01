@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/app.js --exec babel-node",
     "test": "NODE_ENV=test nyc --reporter=html --reporter=text --reporter=lcov mocha -- --require @babel/register --require @babel/polyfill --exit tests/index.js",
-    "test-coverage": "nyc report --reporter=lcov | coveralls"
+    "test-coverage": "npm test && cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [
     "mocha",

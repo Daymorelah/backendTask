@@ -60,7 +60,7 @@ class Controller {
         newJsonObject,
       });
     } catch (error) {
-      return HelperMethods.sendErrorMessage(res, 400, error.message);
+      return HelperMethods.sendErrorMessage(res, 500, error.message);
     }
   }
 

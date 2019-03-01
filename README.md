@@ -18,7 +18,7 @@ This app was implemented using:
 
 ## INSTALLATION
  * install [Node js](https://nodejs.org/en/)
- * Clone the repository `git clone https://github.com/Daymorelah/backendTask.git` 
+ * Clone the repository `https://github.com/Daymorelah/backendTask.git` 
  * `CD` into the project directory
  * Run `npm install` to install dependencies
  * Run `npm start` to get the app started on your local machine.
@@ -41,5 +41,5 @@ To run tests:
 * Ademola Hussain
 
 ### Licence
-[MIT License](https://github.com/Daymorelah/backendTask/blob/master/LICENSE)
+[MIT License](https://github.com/Daymorelah/backendTask/blob/development/LICENSE)
  

@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/Daymorelah/backendTask.svg?branch=development)](https://travis-ci.org/Daymorelah/backendTask)
+[![Maintainability](https://api.codeclimate.com/v1/badges/50d9e9a0e63b4b5d1d5e/maintainability)](https://codeclimate.com/github/Daymorelah/backendTask/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/50d9e9a0e63b4b5d1d5e/test_coverage)](https://codeclimate.com/github/Daymorelah/backendTask/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/Daymorelah/backendTask/badge.svg)](https://coveralls.io/github/Daymorelah/backendTask)
+[![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
+
 # Back-end Tasks
 This repo contains a simple node server that has only three basic features as list below.
 Features:

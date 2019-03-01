@@ -13,7 +13,7 @@ This app was implemented using:
 * [ESLint](https://eslint.org/) A plugable linting library for javascript.
 * [Babel](https://babeljs.io/docs/en/) A javascript compiler that transpiles ES2015 and above to backward compatible ES5 javascript
 * [Travis CI](https://docs.travis-ci.com/) A Continous Integration tool that automatically builds and tests every new code that wil be aded to your codebase via a `Git push`
-* [COde Climate](https://codeclimate.com/) Helps keep teack on your code's maintianability and test coverage
+* [Code Climate](https://codeclimate.com/) Helps keep teack on your code's maintianability and test coverage
 * [Coveralls](https://coveralls.io/) A web service to help you track your code coverage over time, and ensure that all your new code is fully covered. 
 
 ## INSTALLATION

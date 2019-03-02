@@ -75,7 +75,8 @@ class Controller {
   static createThumbnail(req, res) {
     const { imageUrl } = req.body;
     jimp.read(imageUrl).then((image) => {
-      image.resize(50, 50).write(path.resolve(__dirname, '../image', `newImage.${image.getExtension()}`),
+      const myResizedImage = image.resize(50, 50);
+      myResizedImage.write(path.resolve(__dirname, '../image', `newImage.${image.getExtension()}`),
         (error, resizedImage) => {
           if (error) {
             return HelperMethods

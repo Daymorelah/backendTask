@@ -28,7 +28,7 @@ const res = {
 const param = { resizedImage: 'My resized image' };
 const imageObj = {
   write() { return sinon.stub().returns(null, param); },
-  resize() { return this; },
+  resize() { return { write: () => sinon.stub().returns(null, param) }; },
 };
 const newJsonObject = {
   name: 'my name',
